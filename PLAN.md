@@ -210,8 +210,8 @@ v1 ships `OpfsStorage`. If we later wrap with Capacitor, we add
 
 ---
 
-## 7. Open Questions
-1. Is OPFS-with-export acceptable for v1, or are user-visible files in `Documents/` a hard requirement (→ start with Capacitor instead)?
-2. Should link cards fetch remote metadata at all (requires network + a CORS strategy), or keep links as plain Markdown links in v1?
-3. Any preference on UI framework (React assumed; Svelte/Vue equally viable)?
-4. Nesting depth: strictly Projects → Pages, or allow sub-pages/folders later?
+## 7. Decisions (questions resolved 2026-07-18)
+1. **OPFS-with-export is acceptable** for v1 — no Capacitor needed for now; the storage interface keeps that door open.
+2. **Link cards fetch remote titles/metadata.** Fetches are best-effort: direct fetch first, then a public CORS relay; results are cached locally in IndexedDB and links always remain valid plain Markdown links if fetching fails.
+3. React + TypeScript confirmed as the UI stack.
+4. **Hierarchy stays strictly Projects → Pages** — simplicity is the priority; no sub-pages.
